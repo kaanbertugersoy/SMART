@@ -1,0 +1,6 @@
+numpy
+pandas
+ib_insync
+yfinance
+matplotlib
+tensorflow
