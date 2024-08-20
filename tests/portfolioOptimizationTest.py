@@ -7,13 +7,9 @@ from smart.convexOptimization import optimal_portfolio
 from smart.services.archer.singleTickerRequester import get_single_ticker_data, compute_and_add_log_returns
 
 
-def plot_portfolio_weights(weights_series):
-    plt.figure(figsize=(10, 6))
-    weights_series.plot(kind='bar', color='skyblue')
-    plt.title('Portfolio Weights')
-    plt.xlabel('Assets')
-    plt.ylabel('Weight')
-    plt.show()
+MAX_ASSETS = 1
+MAX_WEIGHT = 1 / MAX_ASSETS
+RISK_AVERSION = 1.0
 
 
 def portfolioOptimizationTest():
@@ -22,6 +18,7 @@ def portfolioOptimizationTest():
     with open('targets.txt', 'r') as f:
         tickers = [line.strip() for line in f]
 
+    tickers = tickers[:50]  # Limit the number of tickers for testing purposes
     successful_tickers = []
     returns_dict = {}
     cutoff_date = datetime.now().date() - timedelta(days=365)
@@ -56,9 +53,20 @@ def portfolioOptimizationTest():
                            keys=returns_dict.keys())
     returns_df.dropna(inplace=True)
     returns_list = returns_df.values.tolist()
-    weights = optimal_portfolio(returns_list, tickers)
+
+    weights = optimal_portfolio(
+        X=returns_list, tickers=tickers, max_weight=MAX_WEIGHT, risk_aversion=RISK_AVERSION)
     weights_series = pd.Series(weights, index=tickers)
 
     print(returns_df.shape)
-    print(weights_series.nlargest(10))
+    print(weights_series.nlargest(MAX_ASSETS+5))
     plot_portfolio_weights(weights_series)
+
+
+def plot_portfolio_weights(weights_series):
+    plt.figure(figsize=(10, 6))
+    weights_series.plot(kind='bar', color='skyblue')
+    plt.title('Portfolio Weights')
+    plt.xlabel('Assets')
+    plt.ylabel('Weight')
+    plt.show()
