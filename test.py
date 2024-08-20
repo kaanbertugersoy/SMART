@@ -1,0 +1,14 @@
+from tests.bayesianOptimizationTest import bayesianOptimizationTest
+from tests.binClassTest import binClassTest
+from tests.consistancyScoringTest import consistancyScoringTest
+from tests.edgarExtractionTest import edgarExtractionTest
+from tests.featImpScoringTest import featImpScoringTest
+from tests.multiInputMultiOutputTest import multiInputMultiOutputTest
+from tests.NNBasedPortfolioOptimizationTest import NNBasedPortfolioOptimizationTest
+from tests.onestepMultiFeatureTest import onestepMultiFeatureTest
+from tests.onestepMultistepMultioutputTest import onestepMultistepMultioutputTest
+from tests.portfolioOptimizationTest import portfolioOptimizationTest
+
+if __name__ == '__main__':
+
+    consistancyScoringTest()
