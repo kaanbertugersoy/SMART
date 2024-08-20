@@ -9,7 +9,7 @@ def optimal_portfolio(X,
                       risk_aversion=0.01,
                       max_weight=0.5,
                       max_assets=None,
-                      max_sector_exposure=0.2,
+                      max_sector_exposure=1e-6,
                       sector_data=None
                       ):
 
@@ -28,15 +28,18 @@ def optimal_portfolio(X,
     # Define Sharpe ratio objective
     # Sortino ratio (learn more: https://www.investopedia.com/terms/s/sortinoratio.asp)
     objective = cp.Maximize((ret - risk * risk_aversion))
+    # risk_aversion is the opposite of the risk tolerance level if it is high, function objective is to maximize the return with the minimum risk possible
 
-    # Define constraints
-    constraints = [cp.sum(weights) == 1, weights >= 0, weights <= max_weight]
+    # Define logical boundary constraints
+    constraints = [cp.sum(weights) == 1, weights >= 0]
 
     # Cardinality constraint
     if max_assets is not None:
         k = cp.Variable(boolean=True, shape=n)
         constraints.append(cp.sum(k) <= max_assets)
         constraints.append(weights <= k * max_weight)
+    else:
+        constraints.append(weights <= max_weight)
 
     # Sector constraints
     if sector_data is not None:
