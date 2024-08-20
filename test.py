@@ -1,3 +1,4 @@
+from tests.autoArimaTest import autoArimaTest
 from tests.bayesianOptimizationTest import bayesianOptimizationTest
 from tests.binClassTest import binClassTest
 from tests.consistancyScoringTest import consistancyScoringTest
@@ -11,4 +12,4 @@ from tests.portfolioOptimizationTest import portfolioOptimizationTest
 
 if __name__ == '__main__':
 
-    consistancyScoringTest()
+    autoArimaTest()
