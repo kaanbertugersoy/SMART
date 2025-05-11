@@ -1,33 +1,41 @@
-Timeseries Analysis Tools
-=========================
+# SMART – Stock Market Analysis and Research Tools
 
-If you see someone predicting prices rather than returns then you should
-immediately stop following him. (This is an illusion and no use of trading
-and investing.)
+**Status: Archived – No Longer Maintained**
 
-What will be SMART able to do:
+SMART (Stock Market Analysis and Research Tools) was an exploratory project aimed at developing tools for comprehensive stock market analysis. The goal was to integrate various analytical components to assist in investment research and decision-making.
 
-- Balance Sheet Analysis (Calculating Real Expected Growth and the Reflection
-  ratio of this growth to price)
-- News Analysis (Logical Reasoning)
-- Global Collapses (oppurtinities)
-- Unreasonable movements (unknown actions taken by big investers (gambles))
-- Sectoral Trends Detection
+## Project Overview
 
-Scores i want to add:
+The envisioned capabilities of SMART included:
 
-- Growth Consistancy (+)
-- Profit Consistancy
-- OverBougth or Oversold
-- Sectoral Popularity Score
+- **Balance Sheet Analysis**: Calculating real expected growth and assessing how this growth is reflected in stock prices.
+- **Regression/Classification**: Training neural networks on market data for trading/backtesting purposes.
+- **Hyperparameter Tuning**: Bayesian optimization for selecting better hyperparams.
+- **Feature Importance Analysis**: Finding the feature weights that mostly contribute to training. 
 
-If the stock price follows random walk, best guess for the next price is
-just the previous value, we can not do any better than this
+Proposed scoring metrics:
 
-what i want to monitor for each model evaluation:
+- **Growth Consistency**
 
-- Onestep, multistep, multioutput differences (+)
-- Comparison with a dummy model for exp.(Random Walk) (+)
-- How affects using different features
-- How the performance change from using 'changes' rather than continuing
-  data !! CRITIC
+## Repository Structure
+
+- `smart/` – Core modules for analysis.
+- `tests/` – Unit tests for validating functionalities.
+- `market_list.csv` – Sample dataset of market listings.
+- `feat_imp_scores.pkl` – Serialized feature importance scores.
+- `requirements.txt` – Python dependencies.
+- `setup.py` – Installation script.
+- `test.py` – Script for testing modules.
+
+## Disclaimer
+
+This project is no longer maintained and may not function as intended. It is archived for reference purposes only. Users are welcome to fork and modify the codebase as needed.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+---
+
+**Author**: Kaan Bertuğ Ersoy  
+[GitHub Profile](https://github.com/kaanbertugersoy)
